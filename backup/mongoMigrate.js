@@ -39,7 +39,7 @@ async function mongoMigrate() {
     try {
         await connect();
         const originDb = originClient.db("reaction");
-        const destinationDb = originClient.db("reaction");
+        const destinationDb = destinationClient.db("reaction");
         for (let collection of collections) {
             console.log(`migrating ${collection}...`);
             const originEntity = originDb.collection(collection);
