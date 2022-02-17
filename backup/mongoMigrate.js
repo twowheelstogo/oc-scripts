@@ -45,11 +45,11 @@ async function mongoMigrate() {
             const originEntity = originDb.collection(collection);
             const destinationEntity = destinationDb.collection(collection);
 
-            const documents = originEntity.find().toArray();
+            const documents = await originEntity.find().toArray();
 
             for(let document of documents) {
                 await destinationEntity.insertOne(document);
-                console.log(document.id, `of ${collection} created`);
+                console.log(document._id, `of ${collection} created`);
             }
         }
 
